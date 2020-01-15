@@ -1,0 +1,22 @@
+echo "Top displays a list of processes, with the ones using the most CPU at the top."
+top
+echo 
+ps -eo pid,ppid,%cpu,%mem,cmd --sort=-pid | head
+
+echo 
+
+echo "USER LOGIN : "
+whoami
+
+echo "Kernel Version : "
+uname -r 
+echo
+
+echo "Os Version and Name : "
+cat /etc/os-release
+echo
+
+echo "Current Working Directory : "
+pwd
+echo
+
