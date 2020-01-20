@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<sys/types.h>
+
+#define MAX 1
+void childProcess(pid_t p)
+{
+	int i;
+	pid_t pid = p;
+	for(i=0;i<MAX;i++)
+	{
+		printf("This line is from child process, %d and pid : %d\n",i,pid);
+
+	}
+}
+
+void parentProcess(pid_t p)
+{
+	int i;
+	pid_t pid = p;
+	for(i=0;i<MAX;i++)
+	{
+		printf("This line is from parent process, %d and pid : %d \n",i,pid);
+
+	}
+}
+
+void main()
+{
+	pid_t pid,mpid;
+	mpid = getpid();
+	printf("MPID = %d\n",mpid);
+	pid= fork();
+	for(int i =0;i<=MAX;i++)
+	{
+		if(pid == 0)
+		{
+			childProcess(pid);
+		}
+		else
+		{
+			parentProcess(pid);
+		}
+	}
+}
