@@ -1,0 +1,81 @@
+#include<stdio.h>
+void search(int a[],int n)
+{	
+	int i,p,j,m,r,hit=0,miss=0;
+	int x=n;
+	float hit_r,miss_r;
+	printf("Initial array is : ");
+	for(i=0;i<n;i++)
+	{
+		printf("\t%d",a[i]);
+	}
+
+	printf("\n Enter the number of elements you want to insert : ");
+	scanf("%d",&m);
+
+	for(i=0;i<m-1;i++)
+	{
+		printf("Enter the you want to insert : ");
+		scanf("%d",&p);
+		for(i=0;i<x;i++)
+		{			
+			if(p==a[i])
+			{
+				hit++;
+				printf("\nHIT!!!\n");
+				printf("New array is : ");
+				for(i=0;i<n;i++)
+				{
+					printf("\t%d",a[i]);
+				}
+				break;
+			}
+			else
+			{
+				printf("Element deleted : %d",a[0]);
+				for(j=0;j<x-1;j++)
+				{
+					a[j]=a[j+1];
+				}					
+				a[x-1]=p;
+				miss++;
+				printf("\n %d ",a[x-1]);
+				printf("\nFAULT!!!\n");
+				printf("New array is : ");
+				for(i=0;i<n;i++)
+				{
+					printf("\t%d",a[i]);
+				}
+				break;
+			}
+		}
+	}
+
+	miss_r= (miss/n)*100;
+	hit_r = (hit/n)*100;
+	
+	printf("Final array is : ");
+	for(i=0;i<n;i++)
+	{
+		printf("\t%d",a[i]);
+	}
+
+	printf("\nHit Ratio : %f \nMiss Ratio : %f",hit_r,miss_r);
+
+}
+void main()
+{
+	int n,i,b;
+	printf("ENTER THE FRAME SIZE : ");
+	scanf("%d",&n);
+
+	int a[n];
+	printf("\nEnter the elements(according to frame size): \n");
+
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+
+	search(a,n); 	
+}
